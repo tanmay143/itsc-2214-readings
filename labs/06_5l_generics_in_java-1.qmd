@@ -1,0 +1,73 @@
+---
+title: "5L. Generics In Java- 2"
+project_link: https://www.dropbox.com/scl/fi/l12m1jgsuucjbmrz5hbfc/5L_java_generics_2-TEMPLATE.zip?rlkey=uqg0jr6jeoabzl2hjkl1vzzri&raw=1
+format: 
+    html:
+        code-links:
+        - text: Project Files
+          icon: file-code
+          href: https://www.dropbox.com/scl/fi/l12m1jgsuucjbmrz5hbfc/5L_java_generics_2-TEMPLATE.zip?rlkey=uqg0jr6jeoabzl2hjkl1vzzri&raw=1
+---
+
+## Project Overview
+
+```
+.
+├── src/
+│   └── GenericsPractice/
+│       └── Matrix.java
+└── test/
+    └── GenericsPractice/
+        └── MatrixTest.java
+```
+
+## Detailed Instructions
+
+Your task is to complete the implementation of a generic `Matrix` class. Currently, the `Matrix` class is empty. A matrix is a two-dimensional arrangement of elements. You access elements with a row and column index. For example:
+
+```java
+Matrix<String> tttBoard = new Matrix<String>(3, 3);
+tttBoard.put(0, 0, "x");
+if (tttBoard.get(1, 2).equals("o")) . . .
+```
+
+Please implement `put` and `get` methods based on the above usage description. Here, the first argument is the row index and the second is the column index.
+
+Since we are not allowed to use generic arrays, we use an ArrayList of ArrayLists instead (an ArrayList that contains another ArrayList inside of it).
+
+First, sketch in a notebook how you envision the rows and columns of a matrix being stored inside this ArrayList of ArrayLists. This ArrayList should be called `elements`. There should also be two integer members of this class - `rows` and `columns` - that store the size of the matrix.
+
+Complete the implementations of the class. Be sure to implement getters and setters. This is what the constructor should look like:
+
+```java
+public Matrix(int rows, int columns) {
+    this.rows = rows;
+    this.columns = columns;
+    elements = new ArrayList<ArrayList<T>>();
+    for (int i = 0; i < rows; i++) {
+        ArrayList<T> row = new ArrayList<T>();
+        for (int j = 0; j < columns; j++)
+            row.add(null);
+
+        elements.add(row);
+    }
+}
+```
+
+This constructor implementation also tells you what the fields of the `Matrix` class should be.
+
+## Rubric
+
+- Project must compile, otherwise no grade.
+- Complete JavaDoc for `GenericsPractice.Matrix` (5 points)
+- All tests passing for `GenericsPractice.MatrixTest` (20 points)
+
+{{< include project_files_download.qmd >}}
+
+{{< include opening_project.qmd >}}
+
+{{< include update_autograder.qmd >}}
+
+{{< include checking_grade.qmd >}}
+
+{{< include submission_instructions.qmd  >}}
